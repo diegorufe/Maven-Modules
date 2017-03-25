@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="idInput" default="" required="false" />
+		<composite:attribute name="max" default="0" required="false" />
+		<composite:attribute name="rows" default="5" required="false" />
+		<composite:attribute name="columns" default="33" required="false" />
+		<composite:attribute name="autoResize" default="false" required="false" />
+		<composite:attribute name="value" default="" required="false" />
+		<composite:attribute name="styleClass" default="" required="false" />
+		<composite:attribute name="requiered" default="false" required="false" />
+		<composite:attribute name="disabled" default="false" required="false" />
+	</composite:interface>
+
+	<composite:implementation>
+		<p:inputTextarea id="#{cc.attrs.idInput}"
+		    rows="#{cc.attrs.rows}"
+		    cols="#{cc.attrs.columns}"
+		    disabled="#{cc.attrs.disabled}"
+		    required="#{cc.attrs.required}" 
+		    maxlength="#{cc.attrs.max}"
+		    autoResize="#{cc.attrs.autoResize}"
+			styleClass="#{cc.attrs.styleClass}"
+			value="#{cc.attrs.value}" />
+	</composite:implementation>
+
+</ui:composition>

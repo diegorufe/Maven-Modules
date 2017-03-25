@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="browser" required="true" />
+		<composite:attribute name="typeList" required="false" default="G" />
+		<composite:attribute name="toolBar" required="false" default="true" />
+		<composite:attribute name="onSelect"
+			method-signature="void actionListener(org.primefaces.event.SelectEvent)"
+			required="false" />
+		<composite:attribute name="updateSel" required="false" default="" />
+		<composite:attribute name="idTable" required="false" default="" />
+		<composite:attribute name="createForm" required="false" default="true" />
+		<composite:attribute name="filtros" required="false" default="false" />
+		<composite:attribute name="updateFiltros" required="false" default="" />
+		<composite:attribute name="modalFiltros" required="false" default="" />
+	</composite:interface>
+
+	<composite:implementation>
+		<c:if test="#{cc.attrs.createForm}">
+			<h:form prependId="false">
+				<c:if test="#{cc.attrs.toolBar}">
+					<rf:abmToolBar id="toolBarModal"  abm="#{cc.attrs.browser.abm}"
+						filtros="#{cc.attrs.filtros}" 
+						updateFiltros="#{cc.attrs.updateFiltros}" 
+						modalFiltros="#{cc.attrs.modalFiltros}"
+					>
+					</rf:abmToolBar>
+				</c:if>
+				<c:if test="#{cc.attrs.idTable == ''}">
+					<rf:dataTable tipeTable="#{cc.attrs.typeList}" id="lisAbmDiv"
+						onSelect="#{cc.attrs.onSelect}"
+						updateTipeTable="#{cc.attrs.updateSel}"
+						idTable="#{cc.attrs.browser.abm.getClassName()}lisAbmTable"
+						lazyTable="#{cc.attrs.browser.lazyTable}" selectionMode="single">
+					</rf:dataTable>
+				</c:if>
+				<c:if test="#{cc.attrs.idTable != ''}">
+					<rf:dataTable tipeTable="#{cc.attrs.typeList}"
+						id="{cc.attrs.idTable}" onSelect="#{cc.attrs.onSelect}"
+						updateTipeTable="#{cc.attrs.updateSel}"
+						idTable="#{cc.attrs.idTable}"
+						lazyTable="#{cc.attrs.browser.lazyTable}" selectionMode="single">
+					</rf:dataTable>
+				</c:if>
+			</h:form>
+		</c:if>
+		<c:if test="#{cc.attrs.createForm == false}">
+			<c:if test="#{cc.attrs.toolBar}">
+				<rf:abmToolBar id="toolBarModal" abm="#{cc.attrs.browser.abm}">
+				</rf:abmToolBar>
+			</c:if>
+			<c:if test="#{cc.attrs.idTable == ''}">
+				<rf:dataTable tipeTable="#{cc.attrs.typeList}" id="lisAbmDiv"
+					onSelect="#{cc.attrs.onSelect}"
+					updateTipeTable="#{cc.attrs.updateSel}"
+					idTable="#{cc.attrs.browser.abm.getClassName()}lisAbmTable"
+					lazyTable="#{cc.attrs.browser.lazyTable}" selectionMode="single">
+				</rf:dataTable>
+			</c:if>
+			<c:if test="#{cc.attrs.idTable != ''}">
+				<rf:dataTable tipeTable="#{cc.attrs.typeList}"
+					id="{cc.attrs.idTable}" onSelect="#{cc.attrs.onSelect}"
+					updateTipeTable="#{cc.attrs.updateSel}"
+					idTable="#{cc.attrs.idTable}"
+					lazyTable="#{cc.attrs.browser.lazyTable}" selectionMode="single">
+				</rf:dataTable>
+			</c:if>
+		</c:if>
+	</composite:implementation>
+</ui:composition>

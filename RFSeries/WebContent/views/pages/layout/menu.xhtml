@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:p="http://primefaces.org/ui">
+	<aside class="main-sidebar">
+		<section class="sidebar-menu ">
+			<h:form prependId="false">
+				<p:panelMenu style="width:99%; margin-top:20px;">
+					<p:submenu label="#{i18n['menu.sub.maestros']}">
+						<p:menuitem value="#{i18n['menu.home']}"
+							action="#{navigationController.goHomeUrl()}"
+							icon="fa fa-mail-forward" />
+						<p:menuitem value="#{i18n['menu.categorias']}"
+							action="#{navigationController.goCategoriasUrl()}"
+							icon="fa fa-mail-forward" />
+						<p:menuitem value="#{i18n['menu.series']}"
+							action="#{navigationController.goSeriesUrl()}"
+							icon="fa fa-mail-forward" />	
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</section>
+	</aside>
+</ui:composition>

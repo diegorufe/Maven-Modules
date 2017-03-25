@@ -1,0 +1,50 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+	
+	
+	<url-mapping id="redirect">
+		<pattern value="/" />
+		<view-id value="/views/pages/redirect.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="redirectLogout">
+		<pattern value="/logout.series" />
+		<view-id value="/views/pages/redirect.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="redirectLogout">
+		<pattern value="/logout.gym" />
+		<view-id value="/views/pages/redirect.xhtml" />
+	</url-mapping>
+	
+	
+	<url-mapping id="login">
+		<pattern value="/Login.series" />
+		<view-id value="/views/pages/login.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="home">
+		<pattern value="/Home.series" />
+		<view-id value="/views/pages/home.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="categories">
+		<pattern value="/Categories.series" />
+		<view-id value="/views/pages/maestros/categorias/categorias.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="series">
+		<pattern value="/Series.series" />
+		<view-id value="/views/pages/maestros/series/series.xhtml" />
+	</url-mapping>
+	
+	
+	<url-mapping id="accesoDenegado">
+		<pattern value="/403.series" />
+		<view-id value="/views/pages/accesoDenegado.xhtml" />
+	</url-mapping>
+	
+	
+</pretty-config>

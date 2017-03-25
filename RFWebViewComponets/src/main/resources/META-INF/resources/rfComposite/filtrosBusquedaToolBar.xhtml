@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<composite:interface>
+		<composite:attribute name="browser" required="true" />
+	</composite:interface>
+
+	<composite:implementation>
+		<div class="filtrosBusquedaToolbar">
+			<p:commandButton type="submit" icon="fa fa-fw fa-search-plus" ajax="true"
+				styleClass="filtrosBusquedaToolBarButton" action="#{cc.attrs.browser.aplicarFiltrosBusqueda()}" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-search-minus" ajax="true"
+				styleClass="filtrosBusquedaToolBarButton" action="#{cc.attrs.browser.resetFiltrosBusqueda()}" />
+		</div>
+	</composite:implementation>
+
+</ui:composition>

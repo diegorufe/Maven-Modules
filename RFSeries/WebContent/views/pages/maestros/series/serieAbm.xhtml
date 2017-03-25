@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<rf:abm id="#{serieController.getClasegenerica().getSimpleName()}Modal"
+		abm="#{serieController.browser.abm}" idModal="serieAbm"
+		widgetVar="serieAbm"
+		src="/views/pages/maestros/series/serieAbmContent.xhtml"
+		header="#{i18n['serie.titulo']}">
+	</rf:abm>
+
+
+</ui:composition>

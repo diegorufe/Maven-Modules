@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="headerSel" required="false" default="" />
+		<composite:attribute name="browserSel" required="true" />
+		<composite:attribute name="idIn1" default="" required="false" />
+		<composite:attribute name="idIn2" default="" required="false" />
+		<composite:attribute name="idInput" default="" required="false" />
+		<composite:attribute name="max" default="50" required="false" />
+		<composite:attribute name="type" default="text" required="false" />
+		<composite:attribute name="value" default="" required="false" />
+		<composite:attribute name="styleClass" default="" required="false" />
+		<composite:attribute name="requiered" default="false" required="false" />
+		<composite:attribute name="disabled" default="true" required="false" />
+		<composite:attribute name="size" default="0" required="false" />
+		<composite:attribute name="idInput2" default="" required="false" />
+		<composite:attribute name="max2" default="50" required="false" />
+		<composite:attribute name="type2" default="text" required="false" />
+		<composite:attribute name="value2" default="" required="false" />
+		<composite:attribute name="styleClass2" default="" required="false" />
+		<composite:attribute name="requiered2" default="false"
+			required="false" />
+		<composite:attribute name="disabled2" default="true" required="false" />
+		<composite:attribute name="size2" default="0" required="false" />
+		<composite:attribute name="disabledButton" default="true"
+			required="false" />
+		<composite:attribute name="typeCnt" default="" required="false" />
+		<composite:attribute name="widget" default="" required="false" />
+		<composite:attribute name="onSelect"
+			method-signature="void actionListener(org.primefaces.event.SelectEvent)"
+			required="false" />
+		<composite:attribute name="updateSel" required="false" default="" />
+		<composite:attribute name="delSelect" default="#"
+			method-signature="java.lang.String action()" required="false" />
+	</composite:interface>
+
+	<composite:implementation>
+		<p:panelGrid columns="4">
+			<rf:inputText id="#{cc.attrs.idIn1}" idInput="#{cc.attrs.idInput}"
+				max="#{cc.attrs.max}" type="#{cc.attrs.type}"
+				value="#{cc.attrs.value}" styleClass="#{cc.attrs.styleClass}"
+				required="#{cc.attrs.required}" disabled="#{cc.attrs.disabled}"
+				size="#{cc.attrs.size}" />
+			<p:commandButton type="buttom" icon="fa fa-fw fa-search-plus"
+				ajax="true" styleClass="abmToolBarButton" process="@this"
+				disabled="#{cc.attrs.disabledButton}"
+				onclick="PF('#{cc.attrs.widget}').show()" />
+			<p:commandButton type="buttom" icon="fa fa-fw fa-eraser" ajax="true"
+				styleClass="abmToolBarButton" process="@this"
+				update="#{cc.attrs.updateSel}" disabled="#{cc.attrs.disabledButton}"
+				action="#{cc.attrs.delSelect}" />
+			<rf:inputText id="#{cc.attrs.idIn2}" idInput="#{cc.attrs.idInput2}"
+				max="#{cc.attrs.max2}" type="#{cc.attrs.type2}"
+				value="#{cc.attrs.value2}" styleClass="#{cc.attrs.styleClass2}"
+				required="#{cc.attrs.required2}" disabled="#{cc.attrs.disabled2}"
+				size="#{cc.attrs.size2}" />
+		</p:panelGrid>
+		<rf:selEntidad updateSel="#{cc.attrs.updateSel}"
+			browserSel="#{cc.attrs.browserSel}"
+			id="#{cc.attrs.controllerSel.getClasegenerica().getSimpleName()}Sel"
+			abm="#{cc.attrs.controllerSel.browser.abm}"
+			idModal="#{cc.attrs.widget}" widgetVar="#{cc.attrs.widget}"
+			onSelect="#{cc.attrs.onSelect}" header="#{cc.attrs.headerSel}" />
+	</composite:implementation>
+
+</ui:composition>

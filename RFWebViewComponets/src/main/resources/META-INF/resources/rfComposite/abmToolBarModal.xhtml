@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite">
+
+	<composite:interface>
+		<composite:attribute name="abm" required="true" />
+	</composite:interface>
+
+	<composite:implementation>
+		<div class="abmToolBar">
+			<p:commandButton type="submit" icon="fa fa-fw fa-thumbs-up"
+				ajax="true" styleClass="abmToolBarButton"
+				rendered="#{cc.attrs.abm.isAdd()}" action="#{cc.attrs.abm.add()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-thumbs-down"
+				ajax="true" styleClass="abmToolBarButton"
+				rendered="#{cc.attrs.abm.isAdd()}" action="#{cc.attrs.abm.close()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-thumbs-up"
+				ajax="true" styleClass="abmToolBarButton"
+				rendered="#{cc.attrs.abm.isModi()}" action="#{cc.attrs.abm.modi()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-thumbs-down"
+				ajax="true" styleClass="abmToolBarButton"
+				rendered="#{cc.attrs.abm.isModi()}"
+				action="#{cc.attrs.abm.goShowModal()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-edit" ajax="true"
+				styleClass="abmToolBarButton" rendered="#{cc.attrs.abm.isShow()}"
+				action="#{cc.attrs.abm.goModModal()}" update="@([id$=growlGeneral])" />
+			<p:commandButton type="button" icon="fa fa-fw fa-eraser" ajax="false"
+				styleClass="abmToolBarButton" rendered="#{cc.attrs.abm.isShow()}"
+				onclick="PF('#{cc.attrs.abm.getClassName()}borrarModal').show()" />
+		</div>
+		<rf:confirm id="borraModalDiv"
+			idConfirm="#{cc.attrs.abm.getClassName()}borrarModal"
+			message="#{i18n['seguro.borrar']}"
+			header="#{i18n['borrar.registro']}"
+			widgetVar="#{cc.attrs.abm.getClassName()}borrarModal"
+			updateAcept="#{cc.attrs.abm.getClassName()}Modal"
+			updateCancel="#{cc.attrs.abm.getClassName()}borrarModal"
+			actionAccept="#{cc.attrs.abm.delModal()}" />
+	</composite:implementation>
+
+</ui:composition>

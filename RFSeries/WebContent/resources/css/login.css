@@ -1,0 +1,81 @@
+html {
+	height: 100% !important;
+	width: 100%;
+}
+
+body {
+	min-height: 100% !important;
+	height: 100% !important;
+	margin: 0px;
+	background: #ebeced !important;
+}
+body{
+/* 	background: #0078ae !important; */
+	background: url("#{resource['images/fondo.jpg']}") no-repeat center center  !important;
+	background-size:cover !important;
+  
+}
+.login_panel {
+	margin: 0 auto;
+	width: 16em;
+	overflow: auto;
+	text-align: center;
+	font-family: monserrat !important;
+	margin-top: 2em;
+	-webkit-box-shadow: 13px 19px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 13px 19px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 13px 19px 5px 0px rgba(0,0,0,0.75);
+}
+
+.grid-login>div {
+	border: none;
+}
+
+.grid-login, div, label, input, buttom, span, a {
+	font-family: monserrat !important;
+	font-size: 20px;
+}
+
+.login_panel a {
+	color: #77d5f7 !important;
+	text-decoration: none;
+}
+
+#tabs {
+	padding: 0;
+}
+
+#tabs ul {
+	width: 100%;
+	padding: 0px;
+	margin-top: -3px;
+	background: white;
+	display: inline-block;
+}
+
+#tabs ul li {
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: 50%;
+}
+
+#tabs ul .ui-state-default {
+	background: #96A5AE;
+	padding: 0;
+	margin: 0;
+}
+
+#tabs ul .ui-state-default a {
+	color: gray !important;
+}
+
+#tabs ul .ui-state-active a {
+	color: #77d5f7 !important;
+}
+
+#tabs ul .ui-state-active {
+	background: white;
+	padding: 0;
+	margin: 0;
+}

@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite">
+
+	<composite:interface>
+		<composite:attribute name="idConfirm" required="true" />
+		<composite:attribute name="closable" required="false" default="true" />
+		<composite:attribute name="appendTo" required="false"
+			default="@(body)" />
+		<composite:attribute name="closableOnEscape" required="false"
+			default="true" />
+		<composite:attribute name="height" required="false" default="30" />
+		<composite:attribute name="message" required="false" default="" />
+		<composite:attribute name="header" required="false" default="" />
+		<composite:attribute name="severity" required="false" default="alert" />
+		<composite:attribute name="widgetVar" required="true" />
+		<composite:attribute name="updateCancel" required="false"
+			default="sinUpdate" />
+		<composite:attribute name="updateAcept" required="false"
+			default="sinUpdate" />
+		<composite:attribute name="actionAccept" default="#"
+			method-signature="java.lang.String action()" required="false" />
+	</composite:interface>
+
+	<composite:implementation>
+		<p:confirmDialog id="#{cc.attrs.idConfirm}"
+			closable="#{cc.attrs.closable}" appendTo="#{cc.attrs.appendTo}"
+			closeOnEscape="#{cc.attrs.closableOnEscape}"
+			height="#{cc.attrs.height}" message="#{cc.attrs.message}"
+			header="#{cc.attrs.header}" severity="#{cc.attrs.severity}"
+			widgetVar="#{cc.attrs.widgetVar}">
+			<table style="margin: 0 auto !important;">
+				<tr>
+					<td><p:commandButton ajax="true" icon="fa fa-fw fa-thumbs-up"
+							process="@this" styleClass="confirmButton"
+							oncomplete="PF('#{cc.attrs.widgetVar}').hide()"
+							action="#{cc.attrs.actionAccept}"
+							update="@([id$=#{cc.attrs.updateAcept}]),growlGeneral" /></td>
+
+					<td><p:commandButton ajax="true"
+							icon="fa fa-fw fa-thumbs-down" styleClass="confirmButton"
+							onclick="PF('#{cc.attrs.widgetVar}').hide()"
+							update="@([id$=#{cc.attrs.updateCancel}" /></td>
+
+				</tr>
+			</table>
+		</p:confirmDialog>
+	</composite:implementation>
+
+</ui:composition>

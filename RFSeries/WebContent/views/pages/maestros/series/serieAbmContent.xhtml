@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:p="http://primefaces.org/ui">
+	<div>
+		<rf:abmToolBarModal id="abmToolBarModal"
+			abm="#{serieController.browser.abm}" />
+		<p:tabView prependId="false">
+			<p:tab title="#{i18n['serie.abm.pest1']}">
+				<p:panelGrid columns="1">
+					<rf:label forComponent="SerieModal:codigoDiv:codigo"
+						value="#{i18n['genericos.codigo']}" />
+					<rf:inputText id="codigoDiv" type="number"
+						value="#{serieController.entity.codigo}" idInput="codigo"
+						requiered="true" size="11" max="11" disabled="true" />
+					<rf:label forComponent="SerieModal:DescriDiv:descripcion"
+						value="#{i18n['genericos.descri']}" />
+					<rf:inputText id="DescriDiv"
+						value="#{serieController.entity.descri}" idInput="descripcion"
+						requiered="true" size="50" max="100"
+						disabled="#{serieController.browser.abm.isShow()}" />
+					<rf:label
+						forComponent="SerieModal:cntSelCategoria:CategoriaCoidgoDiv:categoriaCodigo"
+						value="#{i18n['serie.categoria']}" />
+					<rf:cntSel id="cntSelCategoria" idIn1="CategoriaCoidgoDiv"
+						idIn2="CategoriaDescriDiv" idInput="categoriaCodigo"
+						idInput2="categoriaDescri" max="11" max2="50" size="11" size2="28"
+						disabled="true" disabled2="true"
+						value="#{serieController.entity.categoria.codigo}"
+						value2="#{serieController.entity.categoria.descri}"
+						disabledButton="#{serieController.browser.abm.isShow()}"
+						widget="CategoriaSel"
+						headerSel="#{i18n['categoria.sel']}"
+						browserSel="#{categoriaController.browser}"
+						delSelect="#{serieController.delCategoriaAbm}"
+						onSelect="#{serieController.onSelecCategoriaListener}"
+						updateSel="@([id$=categoriaCodigo]),@([id$=categoriaDescri])" />
+					<rf:label forComponent="SerieModal:ObservaDiv:observa"
+						value="#{i18n['serie.observa']}" />
+					<rf:inputTextArea id="ObservaDiv"
+						max="1000"
+						value="#{serieController.entity.observa}" idInput="observa"
+						disabled="#{serieController.browser.abm.isShow()}" />
+				</p:panelGrid>
+			</p:tab>
+			<p:tab title="#{i18n['serie.abm.pest2']}">
+				<p:panelGrid columns="2">
+					<p:panelGrid columns="1">
+						<rf:label
+							forComponent="#{serieController.getClasegenerica().getSimpleName()}Modal:capituloDiv:capitulo"
+							value="#{i18n['serie.capitulo']}" />
+						<rf:inputNumber id="capituloDiv" idInput="capitulo"
+							value="#{serieController.entity.capitulo}"
+							disabled="#{serieController.browser.abm.isShow()}" size="13"
+							max="11" maxValue="99999999999" decimals="0" />
+					</p:panelGrid>
+					<p:panelGrid columns="1">
+						<rf:label
+							forComponent="#{serieController.getClasegenerica().getSimpleName()}Modal:capitulosDiv:capitulos"
+							value="#{i18n['serie.capitulos']}" />
+						<rf:inputNumber id="capitulosDiv" idInput="capitulos"
+							value="#{serieController.entity.capitulos}"
+							disabled="#{serieController.browser.abm.isShow()}" size="13"
+							max="11" maxValue="99999999999" decimals="0" />
+					</p:panelGrid>
+				</p:panelGrid>
+				<p:panelGrid columns="2">
+					<p:panelGrid columns="1">
+						<rf:label
+							forComponent="#{serieController.getClasegenerica().getSimpleName()}Modal:temporadaDiv:temporada"
+							value="#{i18n['serie.temporada']}" />
+						<rf:inputNumber id="temporadaDiv" idInput="temporada"
+							value="#{serieController.entity.temporada}"
+							disabled="#{serieController.browser.abm.isShow()}" size="13"
+							max="11" maxValue="99999999999" decimals="0" />
+					</p:panelGrid>
+					<p:panelGrid columns="1">
+						<rf:label
+							forComponent="#{serieController.getClasegenerica().getSimpleName()}Modal:temporadasDiv:temporadas"
+							value="#{i18n['serie.temporadas']}" />
+						<rf:inputNumber id="temporadasDiv" idInput="temporadas"
+							value="#{serieController.entity.temporadas}"
+							disabled="#{serieController.browser.abm.isShow()}" size="13"
+							max="11" maxValue="99999999999" decimals="0" />
+					</p:panelGrid>
+				</p:panelGrid>
+			</p:tab>
+			<p:tab title="#{i18n['serie.abm.pest3']}">
+				<p:panelGrid columns="4">
+					<rf:check idCheck="activa" itemLabel="#{i18n['serie.activa']}"
+						value="#{serieController.entity.activa}"
+						disabled="#{serieController.browser.abm.isShow()}" />
+					<rf:check idCheck="repeticion"
+						itemLabel="#{i18n['serie.repeticion']}"
+						value="#{serieController.entity.repeticion}"
+						disabled="#{serieController.browser.abm.isShow()}" />
+					<rf:check idCheck="finalizada"
+						itemLabel="#{i18n['serie.finalizada']}"
+						value="#{serieController.entity.finalizada}"
+						disabled="#{serieController.browser.abm.isShow()}" />
+					<rf:check idCheck="vista"
+						itemLabel="#{i18n['serie.vista']}"
+						value="#{serieController.entity.vista}"
+						disabled="#{serieController.browser.abm.isShow()}" />	
+				</p:panelGrid>
+			</p:tab>
+			<p:tab title="#{i18n['serie.abm.pest4']}">
+			</p:tab>
+		</p:tabView>
+	</div>
+</ui:composition>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+	<!-- Base Core -->
+	<managed-bean>
+		<managed-bean-name>sessionController</managed-bean-name>
+		<managed-bean-class>com.rfBaseCore.session.controller.impl.SessionControllerImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{usuarioService}</value>
+		</managed-property>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>idiomaController</managed-bean-name>
+		<managed-bean-class>com.rfBaseCore.i18n.controller.impl.IdiomaControllerImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>dateConverter</managed-bean-name>
+		<managed-bean-class>com.rfBaseCore.converters.DateConverter</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- Fin Base Core -->
+	<managed-bean>
+		<managed-bean-name>navigationController</managed-bean-name>
+		<managed-bean-class>com.rfSeries.core.controller.impl.NavigationControllerImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>categoriaController</managed-bean-name>
+		<managed-bean-class>com.rfSeries.maestros.controller.impl.CategoriaControllerImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{categoriaService}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>serieController</managed-bean-name>
+		<managed-bean-class>com.rfSeries.maestros.controller.impl.SerieControllerImpl</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{serieService}</value>
+		</managed-property>
+	</managed-bean>
+</faces-config>    

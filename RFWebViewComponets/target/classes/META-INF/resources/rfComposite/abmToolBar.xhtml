@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<composite:interface>
+		<composite:attribute name="abm" required="true" />
+		<composite:attribute name="filtros" required="false" default="false" />
+		<composite:attribute name="updateFiltros" required="false" default="" />
+		<composite:attribute name="modalFiltros" required="false" default="" />
+	</composite:interface>
+
+	<composite:implementation>
+		<div class="abmToolBar">
+			<p:commandButton type="submit" icon="fa fa-fw fa-eye" ajax="true"
+				styleClass="abmToolBarButton" action="#{cc.attrs.abm.goShow()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-plus" ajax="true"
+				styleClass="abmToolBarButton" action="#{cc.attrs.abm.goAdd()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-edit" ajax="true"
+				styleClass="abmToolBarButton" action="#{cc.attrs.abm.goMod()}"
+				update="@([id$=growlGeneral])" />
+			<p:commandButton type="submit" icon="fa fa-fw fa-eraser" ajax="true"
+				styleClass="abmToolBarButton" action="#{cc.attrs.abm.goDel()}"
+				update="@([id$=growlGeneral])" />
+			<c:if test="#{cc.attrs.filtros}">
+				<p:commandButton type="submit" icon="fa fa-fw fa-search" ajax="true"
+					styleClass="abmToolBarButton" action="#{cc.attrs.abm.browser.goFiltrosBusqueda(cc.attrs.modalFiltros)}"
+					update="@([id$=growlGeneral]),@([id$=#{cc.attrs.browser.abm.getClassName()}PanelFiltros]),#{cc.attrs.updateFiltros}" />
+			</c:if>
+		</div>
+		<rf:confirm id="borraListDiv"
+			idConfirm="#{cc.attrs.abm.getClassName()}borrarList"
+			message="#{i18n['seguro.borrar']}"
+			header="#{i18n['borrar.registro']}"
+			widgetVar="#{cc.attrs.abm.getClassName()}borrarList"
+			updateAcept="#{cc.attrs.abm.getClassName()}lisAbmTable"
+			updateCancel="#{cc.attrs.abm.getClassName()}borrarList"
+			actionAccept="#{cc.attrs.abm.del()}" />
+	</composite:implementation>
+
+</ui:composition>

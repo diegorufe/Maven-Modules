@@ -1,0 +1,77 @@
+/*Generics*/
+.font-montserrat {
+	font-family: monserrat !important;
+}
+
+.bg-yellow {
+	background-color: #f39c12 !important;
+}
+
+.font-white {
+	color: white !important;
+}
+
+.full-heigth {
+	min-height: 100% !important;
+	height: 100% !important;
+}
+
+.bg-cyan {
+	background-color: #00c0ef !important;
+}
+
+.bg-green {
+	background-color: #00a65a !important;
+}
+
+.text-align-left {
+	text-align: left;
+}
+
+.margin-bottom {
+	margin-bottom: 3em !important;
+}
+
+.bg-salmon {
+	background-color: #E9967A !important;
+}
+
+.bg-fire {
+	background-color: #B22222 !important;
+}
+
+.bg-orangered {
+	background-color: #FF4500 !important;
+}
+
+.bg-rosybrown {
+	background-color: #BC8F8F !important;
+}
+
+.bg-royalblue {
+	background-color: #4169E1 !important;
+}
+
+.bg-violet {
+	background-color: #EE82EE !important;
+}
+
+.bg-red {
+	background-color: #FF0000 !important;
+}
+
+.bg-yellowgreen {
+	background-color: #9ACD32 !important;
+}
+
+.bg-backColor-all {
+	background: #ebeced !important;
+}
+
+.margin-bottom1 {
+	margin-bottom: 1em !important;
+}
+
+#growlGeneral_container{
+	z-index: 99999 !important;
+}

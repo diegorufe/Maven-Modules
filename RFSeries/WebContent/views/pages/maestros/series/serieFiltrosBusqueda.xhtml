@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rf="http://java.sun.com/jsf/composite/rfComposite"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<rf:filtrosBusqueda id="#{serieController.getClasegenerica().getSimpleName()}FiltroBusquedaSeries"
+		browser="#{serieController.browser}" 
+		widgetVar="filtrosBusquedaSeries"
+		src="/views/pages/maestros/series/serieFiltrosBusquedaContent.xhtml" >
+	</rf:filtrosBusqueda>
+
+
+</ui:composition>
